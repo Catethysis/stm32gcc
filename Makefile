@@ -1,6 +1,6 @@
 ARMGNU = arm-none-eabi
 
-COPS = -nostdlib -nostartfiles -ffreestanding  -lm -specs=nosys.specs
+COPS = -nostdlib -std=c99 -nostartfiles -ffreestanding -lm -specs=nosys.specs
 CPU  = -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16
 COPT = -Os
 
@@ -19,7 +19,7 @@ $(OBJ_DIR)/startup_stm32f4xx.o: $(STM32_DIR)/startup_stm32f4xx.s
 	$(ARMGNU)-as $(STM32_DIR)/startup_stm32f4xx.s -o $(OBJ_DIR)/startup_stm32f4xx.o
 
 $(OBJ_DIR)/main.o: $(SRC_DIR)/main.c
-	$(ARMGNU)-gcc $(COPS) $(CPU) $(COPT) -I$(CMSIS_DIR)/ -I$(STM32_DIR)/ -c $(SRC_DIR)/main.c -o $(OBJ_DIR)/main.o
+	$(ARMGNU)-gcc $(COPS) $(CPU) $(COPT) -I$(CMSIS_DIR) -I$(STM32_DIR) -c $(SRC_DIR)/main.c -o $(OBJ_DIR)/main.o
 
 $(BIN_DIR)/firmware.bin: $(STM32_DIR)/linker.ld $(OBJ_DIR)/startup_stm32f4xx.o $(OBJ_DIR)/main.o
 	mkdir $(BUILD_DIR) $(BIN_DIR) $(LIST_DIR)
