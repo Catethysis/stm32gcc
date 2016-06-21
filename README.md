@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Catethysis/stm32gcc.svg?branch=master)](https://travis-ci.org/Catethysis/stm32gcc)
+
 #stm32gcc
 A simple example for stm32 firmware compiling using gcc/Make.
 My method is partially based on https://github.com/dwelch67/stm32f4d repo with many changes and additions.
